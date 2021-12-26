@@ -10,6 +10,7 @@ const LogIn = lazy(() => import("./components/pages/LoginPage/LogInPage"));
 const ContactsPage = lazy(() =>
   import("./components/pages/ContactsPage/ContactsPage")
 );
+const ContactForm = lazy(() => import("./components/ContactForm/ContactForm"));
 
 function App() {
   // const [value, setValue] = useState("");
@@ -24,6 +25,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/contacts/addNewContact" element={<ContactForm />} />
         </Routes>
       </Suspense>
       {/* <div>

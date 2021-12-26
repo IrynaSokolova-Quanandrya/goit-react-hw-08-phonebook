@@ -1,10 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import phonebookActions from "../redux/actions";
-import { getVisibleContacts } from "../redux/selectors";
+import phonebookActions from "../../redux/actions";
+import { getVisibleContacts } from "../../redux/selectors";
 import PropTypes from "prop-types";
-import styles from "../styles/button.module.css";
-import s from "../styles/contactList.module.css";
+import styles from "../../styles/button.module.css";
+import s from "../../styles/contactList.module.css";
 
 export default function ContactList() {
   const contactsList = useSelector(getVisibleContacts);

@@ -1,13 +1,15 @@
 import { Button } from "react-bootstrap";
-import ContactList from "../../ContactList";
+import { Link } from "react-router-dom";
+import s from "../ContactsPage/ContactsPage.module.css";
+import ContactList from "../../ContactList/ContactList";
 export default function Contacts() {
-  const handleClick = (e) => {};
-
   return (
     <>
       <ContactList />
-      <Button variant="primary" type="button" size="sm" onClick={handleClick}>
-        Add contact
+      <Button variant="primary" type="button" size="sm">
+        <Link to="/contacts/addNewContact" className={s.add}>
+          Add contact
+        </Link>
       </Button>
     </>
   );

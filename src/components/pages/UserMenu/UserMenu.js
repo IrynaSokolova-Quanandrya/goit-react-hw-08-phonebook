@@ -1,5 +1,5 @@
 import Button from "react-bootstrap/Button";
-import ContactList from "../../ContactList";
+// import ContactList from "../../ContactList/ContactList";
 import s from "../UserMenu/UserMenu.module.css";
 
 export default function UserMenu() {
