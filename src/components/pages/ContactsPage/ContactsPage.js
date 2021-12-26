@@ -1,4 +1,14 @@
-import ContactForm from "../../ContactForm";
+import { Button } from "react-bootstrap";
+import ContactList from "../../ContactList";
 export default function Contacts() {
-  return <ContactForm />;
+  const handleClick = (e) => {};
+
+  return (
+    <>
+      <ContactList />
+      <Button variant="primary" type="button" size="sm" onClick={handleClick}>
+        Add contact
+      </Button>
+    </>
+  );
 }

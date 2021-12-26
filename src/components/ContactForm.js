@@ -1,26 +1,29 @@
-/** @format */
 import React from "react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getContacts } from "../redux/selectors";
+import phonebookActions from "../redux/actions";
 import s from "../styles/form.module.css";
 import styles from "../styles/input.module.css";
 import style from "../styles/button.module.css";
-import { useCreateContactsMutation } from "../redux/slice";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-
-  const [createContact, { isLoading }] = useCreateContactsMutation();
+  console.log(name);
+  const [number, setNumber] = useState("");
+  console.log(number);
+  const dispatch = useDispatch();
+  const contacts = useSelector(getContacts);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
+    console.log({ name, value });
     switch (name) {
       case "name":
         setName(value);
         break;
-      case "phone":
-        setPhone(value);
+      case "number":
+        setNumber(value);
         break;
       default:
         return;
@@ -28,13 +31,18 @@ export default function ContactForm() {
   };
 
   const handleSubmit = (e) => {
+    console.log(e);
     e.preventDefault();
-    createContact({ name, phone });
+    if (contacts.find((contact) => contact.name === name)) {
+      alert(`${name} is already in contacts`);
+      return;
+    }
+    dispatch(phonebookActions.addContact({ name, number }));
     reset();
   };
   const reset = () => {
     setName("");
-    setPhone("");
+    setNumber("");
   };
   return (
     <form className={s.form} onSubmit={handleSubmit}>
@@ -51,19 +59,19 @@ export default function ContactForm() {
         />
       </label>
       <label className={styles.label}>
-        Phone
+        Number
         <input
-          value={phone}
+          value={number}
           onChange={handleChange}
           type="tel"
-          name="phone"
+          name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
           required
         />
       </label>
-      <button type="submit" className={style.btn} disabled={isLoading}>
-        {isLoading ? "Creating..." : "Add contact"}
+      <button type="submit" className={style.btn}>
+        Add contact
       </button>
     </form>
   );

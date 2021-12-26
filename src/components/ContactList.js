@@ -1,35 +1,33 @@
-/** @format */
 import React from "react";
-import { useGetContactsQuery } from "redux/slice";
+import { useDispatch, useSelector } from "react-redux";
+import phonebookActions from "../redux/actions";
+import { getVisibleContacts } from "../redux/selectors";
 import PropTypes from "prop-types";
-import ContactListItem from "components/ContactListItem";
-import s from "styles/contactList.module.css";
-import getVisibleContacts from "components/visibleContacts";
+import styles from "../styles/button.module.css";
+import s from "../styles/contactList.module.css";
 
-export default function ContactList({ filter }) {
-  const { data: contacts, isFetching } = useGetContactsQuery();
-
-  const visibleContacts = getVisibleContacts(contacts, filter);
-  const showContacts = !isFetching && visibleContacts.length > 0;
-  const showIfListEmpty =
-    visibleContacts.length === 0 && !isFetching && !filter;
-  const showIfNoResults = visibleContacts.length === 0 && !isFetching && filter;
+export default function ContactList() {
+  const contactsList = useSelector(getVisibleContacts);
+  const dispatch = useDispatch();
 
   return (
-    <>
-      {isFetching && <p>Loading...</p>}
-      {showContacts && (
-        <ul className={s.contact__list}>
-          {visibleContacts.map((contact) => (
-            <ContactListItem key={contact.id} {...contact} />
-          ))}
-        </ul>
-      )}
-      {showIfListEmpty && <h2>Contact list empty</h2>}
-      {showIfNoResults && <h2>No results</h2>}
-    </>
+    <ul className={s.contact__list}>
+      {contactsList.map(({ id, name, number }) => (
+        <li className={s.contact__item} key={id}>
+          {name}: {number}
+          <button
+            type="button"
+            className={styles.btn}
+            onClick={() => dispatch(phonebookActions.deleteContact(id))}
+          >
+            Delete
+          </button>
+        </li>
+      ))}
+    </ul>
   );
 }
 ContactList.prototype = {
-  filter: PropTypes.string.isRequired,
+  contacts: PropTypes.object.isRequired,
+  onDeleteContact: PropTypes.func.isRequired,
 };
