@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getFilter } from "../../redux/selectors";
 import phonebookActions from "../../redux/actions";
 import PropTypes from "prop-types";
-import s from "../styles/input.module.css";
+import s from "../../styles/input.module.css";
 
 export default function Filter() {
   const value = useSelector(getFilter);
