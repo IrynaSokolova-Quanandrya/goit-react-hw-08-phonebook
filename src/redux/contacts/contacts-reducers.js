@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import { createReducer } from "@reduxjs/toolkit";
-import actions from "../redux/actions";
+import actions from "./contacts-actions";
 
 const INITIAL_CONTACTS_LIST = [
   { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },

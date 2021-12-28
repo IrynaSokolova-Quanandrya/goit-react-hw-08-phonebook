@@ -3,11 +3,11 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import { getContacts } from "../../redux/selectors";
-import phonebookActions from "../../redux/actions";
+import { contactsSelectors } from "../../redux/contacts";
+import phonebookActions from "../../redux/contacts/contacts-actions";
 import s from "../../styles/form.module.css";
 import styles from "../../styles/input.module.css";
-import style from "../../styles/button.module.css";
+// import style from "../../styles/button.module.css";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
@@ -16,7 +16,7 @@ export default function ContactForm() {
   // console.log(number);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(contactsSelectors.getContacts);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

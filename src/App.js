@@ -1,5 +1,5 @@
 /** @format */
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router";
 import Container from "./components/Container/Container";
 import AppBar from "./components/AppBar/AppBar";
@@ -13,8 +13,6 @@ const ContactsPage = lazy(() =>
 const ContactForm = lazy(() => import("./components/ContactForm/ContactForm"));
 
 function App() {
-  // const [value, setValue] = useState("");
-  // const handleChange = (e) => setValue(e.target.value);
   return (
     <Container>
       <AppBar />
@@ -28,13 +26,6 @@ function App() {
           <Route path="/contacts/addNewContact" element={<ContactForm />} />
         </Routes>
       </Suspense>
-      {/* <div>
-      <h1 className={s.title}>Phonebook</h1>
-      <ContactForm />
-      <h2 className={s.title}>Contacts</h2>
-      <Filter filter={value} onFilterChange={handleChange} />
-      <ContactList filter={value} />
-    </div> */}
     </Container>
   );
 }

@@ -1,11 +1,4 @@
-import {
-  configureStore,
-  combineReducers,
-  getDefaultMiddleware,
-} from "@reduxjs/toolkit";
-import storage from "redux-persist/lib/storage";
-import logger from "redux-logger";
-import phonebookReducer from "../redux/reducers";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import {
   persistStore,
   persistReducer,
@@ -16,6 +9,9 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { contactsReducer } from "./contacts";
+import { authReducer } from "./auth";
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -23,55 +19,21 @@ const middleware = [
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
-  logger,
 ];
 
-const persistConfig = {
-  key: "contacts",
+const authPersistConfig = {
+  key: "auth",
   storage,
-  blacklist: ["filter"],
+  whitelist: ["token"],
 };
 
-const rootReducer = combineReducers({
-  contacts: persistReducer(persistConfig, phonebookReducer),
-});
-
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    auth: persistReducer(authPersistConfig, authReducer),
+    contacts: contactsReducer,
+  },
   middleware,
   devTools: process.env.NODE_ENV === "development",
 });
 
 export const persistor = persistStore(store);
-// import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-// import { setupListeners } from "@reduxjs/toolkit/query";
-// import logger from "redux-logger";
-// import { contactApi } from "./slice";
-// import {
-//   FLUSH,
-//   REHYDRATE,
-//   PAUSE,
-//   PERSIST,
-//   PURGE,
-//   REGISTER,
-// } from "redux-persist";
-
-// const middleware = [
-//   ...getDefaultMiddleware({
-//     serializableCheck: {
-//       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//     },
-//   }),
-//   contactApi.middleware,
-//   logger,
-// ];
-
-// export const store = configureStore({
-//   reducer: {
-//     [contactApi.reducerPath]: contactApi.reducer,
-//   },
-//   middleware,
-//   devTools: process.env.NODE_ENV === "development",
-// });
-
-// setupListeners(store.dispatch);

@@ -1,12 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFilter } from "../../redux/selectors";
-import phonebookActions from "../../redux/actions";
+import { contactsSelectors } from "../../redux/contacts";
+import phonebookActions from "../../redux/contacts/contacts-actions";
 import PropTypes from "prop-types";
 import s from "../../styles/input.module.css";
 
 export default function Filter() {
-  const value = useSelector(getFilter);
+  const value = useSelector(contactsSelectors.getFilter);
   const dispatch = useDispatch();
 
   return (
