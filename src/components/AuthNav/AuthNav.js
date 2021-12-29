@@ -5,6 +5,12 @@ const AuthNav = () => {
   return (
     <div>
       <NavLink
+        to="/login"
+        className={({ isActive }) => `${s.link} ${isActive ? s.activ : ""}`}
+      >
+        Log In
+      </NavLink>
+      <NavLink
         to="/register"
         className={({ isActive }) => `${s.link} ${isActive ? s.activ : ""}`}
       >

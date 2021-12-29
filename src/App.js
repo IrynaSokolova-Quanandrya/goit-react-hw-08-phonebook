@@ -3,13 +3,11 @@ import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router";
 import Container from "./components/Container/Container";
 import AppBar from "./components/AppBar/AppBar";
-import HomePage from "./components/pages/HomePage/HomePage";
+import HomePage from "./pages/HomePage/HomePage";
 
-const RegisterPage = lazy(() => import("./components/pages/RegisterPage"));
-const LogIn = lazy(() => import("./components/pages/LoginPage/LogInPage"));
-const ContactsPage = lazy(() =>
-  import("./components/pages/ContactsPage/ContactsPage")
-);
+const RegisterPage = lazy(() => import("./pages/RegisterPage"));
+const LogIn = lazy(() => import("./pages/LoginPage/LogInPage"));
+const ContactsPage = lazy(() => import("./pages/ContactsPage/ContactsPage"));
 const ContactForm = lazy(() => import("./components/ContactForm/ContactForm"));
 
 function App() {

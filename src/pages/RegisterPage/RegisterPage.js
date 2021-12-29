@@ -1,16 +1,14 @@
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { authOperations } from "../../../redux/auth";
+import { authOperations } from "../../redux/auth";
 
 export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  // console.log(name);
-  // console.log(email);
-  // console.log(password);
+
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
       case "name":
@@ -23,10 +21,9 @@ export default function Register() {
         return;
     }
   };
-  console.log(authOperations.register());
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
     dispatch(authOperations.register({ name, email, password }));
     setName("");
     setEmail("");
@@ -34,8 +31,8 @@ export default function Register() {
   };
 
   return (
-    <Form>
-      <Form.Group onSubmit={handleSubmit} md="4" controlId="validationCustom01">
+    <Form onSubmit={handleSubmit}>
+      <Form.Group md="4" controlId="validationCustom01">
         <Form.Label>Name</Form.Label>
         <Form.Control
           required

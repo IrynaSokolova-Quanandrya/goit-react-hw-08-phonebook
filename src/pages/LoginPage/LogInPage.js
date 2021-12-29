@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { authOperations } from "../../redux/auth";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -20,17 +21,14 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(authOperations.logIn({ email, password }));
     setEmail("");
     setPassword("");
   };
 
   return (
-    <Form>
-      <Form.Group
-        onSubmit={handleSubmit}
-        className="mb-3"
-        controlId="formBasicEmail"
-      >
+    <Form onSubmit={handleSubmit}>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control
           onChange={handleChange}

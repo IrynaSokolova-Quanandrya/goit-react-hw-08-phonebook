@@ -8,25 +8,15 @@ const Navigation = () => {
         <NavLink
           to="/"
           className={({ isActive }) => `${s.link} ${isActive ? s.activ : ""}`}
-          // className={({ isActive }) => (isActive ? link activ : link)}
         >
           Home
         </NavLink>
-
-        <NavLink
-          to="/login"
-          className={({ isActive }) => `${s.link} ${isActive ? s.activ : ""}`}
-          // className={({ isActive }) => (isActive ? "link activ" : "link")}
-        >
-          Log In
-        </NavLink>
-        <NavLink
+        {/* <NavLink
           to="/contacts"
           className={({ isActive }) => `${s.link} ${isActive ? s.activ : ""}`}
-          // className={({ isActive }) => (isActive ? "link activ" : "link")}
         >
           Contacts
-        </NavLink>
+        </NavLink> */}
       </nav>
     </div>
   );
