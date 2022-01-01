@@ -1,9 +1,8 @@
-import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import { contactsSelectors } from "../../redux/contacts";
+import { contactsSelectors, contactsOperations } from "../../redux/contacts";
 import phonebookActions from "../../redux/contacts/contacts-actions";
 import s from "../../styles/form.module.css";
 import styles from "../../styles/input.module.css";

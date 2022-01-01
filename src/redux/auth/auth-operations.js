@@ -5,37 +5,37 @@ axios.defaults.baseURL = "https://connections-api.herokuapp.com";
 
 const token = {
   set(token) {
-    axios.gefault.headers.common.Authorization = `Bearer ${token}`;
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
   },
   unset() {
-    axios.gefault.headers.common.Authorization = "";
+    axios.defaults.headers.common.Authorization = "";
   },
 };
 
-const register = createAsyncThunk("/auth/register", async (credentials) => {
+const register = createAsyncThunk("auth/register", async (credentials) => {
   try {
     const { data } = await axios.post("/users/signup", credentials);
     token.set(data.token);
     return data;
   } catch (error) {
-    <p>ERROR</p>;
+    <p>EROR</p>;
   }
 });
-const logIn = createAsyncThunk("/auth/login", async (credentials) => {
+const logIn = createAsyncThunk("auth/login", async (credentials) => {
   try {
     const { data } = await axios.post("/users/login", credentials);
     token.set(data.token);
     return data;
   } catch (error) {
-    <p>ERROR</p>;
+    <p>EROR</p>;
   }
 });
-const logOut = createAsyncThunk("/auth/logout", async () => {
+const logOut = createAsyncThunk("auth/logout", async () => {
   try {
     await axios.post("/users/logout");
     token.unset();
   } catch (error) {
-    <p>ERROR</p>;
+    <p>EROR</p>;
   }
 });
 const operations = {

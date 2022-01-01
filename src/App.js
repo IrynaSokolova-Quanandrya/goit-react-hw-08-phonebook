@@ -8,7 +8,7 @@ import HomePage from "./pages/HomePage/HomePage";
 const RegisterPage = lazy(() => import("./pages/RegisterPage"));
 const LogIn = lazy(() => import("./pages/LoginPage/LogInPage"));
 const ContactsPage = lazy(() => import("./pages/ContactsPage/ContactsPage"));
-const ContactForm = lazy(() => import("./components/ContactForm/ContactForm"));
+const ContactForm = lazy(() => import("./pages/ContactForm/ContactForm"));
 
 function App() {
   return (

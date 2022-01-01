@@ -10,7 +10,7 @@ export default function UserMenu() {
   return (
     <>
       <div className={s.user__menu}>
-        <p>{email}, </p>
+        <p className={s.user__menu__text}>Hello, {email}, </p>
         <Button
           variant="primary"
           type="submit"

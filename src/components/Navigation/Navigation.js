@@ -11,12 +11,12 @@ const Navigation = () => {
         >
           Home
         </NavLink>
-        {/* <NavLink
+        <NavLink
           to="/contacts"
           className={({ isActive }) => `${s.link} ${isActive ? s.activ : ""}`}
         >
           Contacts
-        </NavLink> */}
+        </NavLink>
       </nav>
     </div>
   );
