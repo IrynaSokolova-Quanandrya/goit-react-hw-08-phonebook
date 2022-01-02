@@ -14,7 +14,6 @@ export default function UserMenu() {
         <Button
           variant="primary"
           type="submit"
-          size="sm"
           onClick={() => dispatch(authOperations.logOut())}
         >
           Logout

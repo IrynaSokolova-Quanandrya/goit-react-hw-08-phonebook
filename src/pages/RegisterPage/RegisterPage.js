@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { authOperations } from "../../redux/auth";
+import s from '../RegisterPage/RegisterPage.module.css'
 
 export default function Register() {
   const [name, setName] = useState("");
@@ -32,7 +33,7 @@ export default function Register() {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className={s.form}>
       <Form.Group md="4" controlId="validationCustom01">
         <Form.Label>Name</Form.Label>
         <Form.Control

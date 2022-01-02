@@ -1,8 +1,9 @@
 /** @format */
 import { lazy, Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router";
-import { useDispatch } from "react-redux";
-import { authOperations } from "redux/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { authOperations, authSelectors } from "redux/auth";
+import { ProgressBar } from "react-bootstrap";
 import Container from "./components/Container/Container";
 import AppBar from "./components/AppBar/AppBar";
 import HomePage from "./pages/HomePage/HomePage";
@@ -15,6 +16,7 @@ const ContactForm = lazy(() => import("./components/ContactForm/ContactForm"));
 
 function App() {
   const dispatch = useDispatch();
+  const isRefreshingPage = useSelector(authSelectors.getIsRefreshingPage)
 
   useEffect(()=>{
     dispatch(authOperations.fetchCurrentUser());
@@ -23,33 +25,35 @@ function App() {
     <Container>
       <AppBar />
 
-     <Suspense fallback={<div>Loading...</div>}> 
+     {!isRefreshingPage ? <Suspense fallback={<div><ProgressBar striped variant="warning" now={60} /></div>}> 
          <Routes>
-           {/* <Route path='/' element={<HomePage/>}/>
-           <Route path='/register' element={<RegisterPage/>}/>
-           <Route path='/login' element={<LoginPage/>}/> */}
           <Route path="/" element={
-            <PublicRoute>
+            <PublicRoute navigateTo='/contacts'>
               <HomePage />
             </PublicRoute>
           } />
           <Route path="/register"  element={
-          <PublicRoute restricted>
+          <PublicRoute navigateTo='/contacts' restricted>
             <RegisterPage />
           </PublicRoute>
           } />
           <Route path="/login"  element={
-          <PublicRoute restricted>
+          <PublicRoute navigateTo='/contacts' restricted>
             <LoginPage />
-          </PublicRoute>} /> 
+          </PublicRoute>
+        } /> 
           <Route path="/contacts" element={
-          <PrivateRoute>
+          <PrivateRoute navigateTo='/login'>
             <ContactsPage />
             </PrivateRoute>
           } />
-          <Route path="/contacts/addNewContact" element={<ContactForm />} />
+          <Route path="/contacts/addNewContact" element={
+            <PrivateRoute navigateTo='/login'>
+            <ContactForm />
+            </PrivateRoute>
+          }/>
         </Routes>
-      </Suspense>
+      </Suspense> : <b>Loading...</b>}
     </Container>
   );
 }

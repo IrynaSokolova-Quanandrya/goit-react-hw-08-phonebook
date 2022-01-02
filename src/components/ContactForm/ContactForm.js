@@ -1,12 +1,9 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { contactsSelectors, contactsOperations } from "../../redux/contacts";
-import s from "../../styles/form.module.css";
-import styles from "../../styles/input.module.css";
-// import style from "../../styles/button.module.css";
-
+import s from '../ContactForm/ContactForm.module.css'
 export default function ContactForm() {
   const [name, setName] = useState("");
   console.log(name);
@@ -47,16 +44,18 @@ export default function ContactForm() {
   };
   return (
     <>
-      <Button
+    <Button
         variant="primary"
         type="button"
         size="sm"
         onClick={() => navigate(-1)}
       >
-        Go Back
+        Back to contact list
       </Button>
+     <Container>
+      
       <form className={s.form} onSubmit={handleSubmit}>
-        <label className={styles.label}>
+        <label className={s.label}>
           Name
           <input
             value={name}
@@ -68,7 +67,7 @@ export default function ContactForm() {
             required
           />
         </label>
-        <label className={styles.label}>
+        <label className={s.label}>
           Number
           <input
             value={number}
@@ -85,6 +84,8 @@ export default function ContactForm() {
           Add contact
         </Button>
       </form>
+    </Container>
     </>
+   
   );
 }

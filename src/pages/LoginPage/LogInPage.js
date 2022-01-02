@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { authOperations } from "../../redux/auth";
+import s from '../RegisterPage/RegisterPage.module.css';
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -27,7 +28,7 @@ export default function Login() {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className={s.form}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control

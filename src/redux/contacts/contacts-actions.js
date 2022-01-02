@@ -23,22 +23,3 @@ export const deleteContactError = createAction("contacts/deleteContactError");
 
 export const changeFilter = createAction("contacts/changeFilter");
 
-// const addContact = createAction("contacts/add", (contact) => ({
-//   payload: {
-//     contact: {
-//       id: nanoid(),
-//       ...contact,
-//     },
-//   },
-// }));
-
-// const deleteContact = createAction("contact/Delete");
-
-// const changeFilter = createAction("contact/changeFilter");
-
-// const phonebookActions = {
-//   addContact,
-//   deleteContact,
-//   changeFilter,
-// };
-// export default phonebookActions;

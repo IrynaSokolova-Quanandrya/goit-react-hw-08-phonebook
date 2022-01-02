@@ -30,7 +30,6 @@ const addContact =
       number,
       completed: false,
     };
-    console.log(contact);
     dispatch(addContactRequest());
 
     axios
