@@ -18,7 +18,7 @@ const register = createAsyncThunk("auth/register", async (credentials) => {
     token.set(data.token);
     return data;
   } catch (error) {
-    <p>EROR</p>;
+    <p>ERROR</p>;
   }
 });
 const logIn = createAsyncThunk("auth/login", async (credentials) => {
@@ -27,7 +27,7 @@ const logIn = createAsyncThunk("auth/login", async (credentials) => {
     token.set(data.token);
     return data;
   } catch (error) {
-    <p>EROR</p>;
+    <p>ERROR</p>;
   }
 });
 const logOut = createAsyncThunk("auth/logout", async () => {
@@ -35,7 +35,7 @@ const logOut = createAsyncThunk("auth/logout", async () => {
     await axios.post("/users/logout");
     token.unset();
   } catch (error) {
-    <p>EROR</p>;
+    <p>ERROR</p>;
   }
 });
 const operations = {

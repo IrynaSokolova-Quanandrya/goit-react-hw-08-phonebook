@@ -1,6 +1,7 @@
 /** @format */
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router";
+import { authOperations } from "redux/auth";
 import Container from "./components/Container/Container";
 import AppBar from "./components/AppBar/AppBar";
 import HomePage from "./pages/HomePage/HomePage";
@@ -8,9 +9,14 @@ import HomePage from "./pages/HomePage/HomePage";
 const RegisterPage = lazy(() => import("./pages/RegisterPage"));
 const LogIn = lazy(() => import("./pages/LoginPage/LogInPage"));
 const ContactsPage = lazy(() => import("./pages/ContactsPage/ContactsPage"));
-const ContactForm = lazy(() => import("./pages/ContactForm/ContactForm"));
+const ContactForm = lazy(() => import("./components/ContactForm/ContactForm"));
 
 function App() {
+  // const dispatch = useDispatch();
+
+  // useEffect(()=>{
+  //   dispatch(authOperations.fetchCurrentUser());
+  // }, [dispatch])
   return (
     <Container>
       <AppBar />

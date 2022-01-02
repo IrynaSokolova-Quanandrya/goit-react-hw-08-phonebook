@@ -9,14 +9,17 @@ const getAllContacts = (state) => state.contacts.items;
 const getVisibleContacts = createSelector(
   [getAllContacts, getFilter],
   (contacts, filter) => {
+    console.log("Filter:", filter);
+    console.log("Contacts", contacts);
     const normalizedFilter = filter.toLowerCase();
-    return contacts.filter(({ description }) =>
-      description.toLowerCase().includes(normalizedFilter)
+    return contacts.filter(({ name }) =>
+      name.toLowerCase().includes(normalizedFilter)
     );
   }
 );
 
 const contactsSelectors = {
+  getAllContacts,
   getLoading,
   getFilter,
   getVisibleContacts,

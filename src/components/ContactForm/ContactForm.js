@@ -3,19 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { contactsSelectors, contactsOperations } from "../../redux/contacts";
-import phonebookActions from "../../redux/contacts/contacts-actions";
 import s from "../../styles/form.module.css";
 import styles from "../../styles/input.module.css";
 // import style from "../../styles/button.module.css";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
-  // console.log(name);
+  console.log(name);
   const [number, setNumber] = useState("");
-  // console.log(number);
+  console.log(number);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const contacts = useSelector(contactsSelectors.getContacts);
+  const contacts = useSelector(contactsSelectors.getAllContacts);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,7 +38,7 @@ export default function ContactForm() {
       alert(`${name} is already in contacts`);
       return;
     }
-    dispatch(phonebookActions.addContact({ name, number }));
+    dispatch(contactsOperations.addContact({ name, number }));
     reset();
   };
   const reset = () => {
