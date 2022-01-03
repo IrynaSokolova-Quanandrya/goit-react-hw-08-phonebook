@@ -45,7 +45,7 @@ export default function ContactForm() {
   return (
     <>
     <Button
-        variant="primary"
+        variant="outline-light"
         type="button"
         size="sm"
         onClick={() => navigate(-1)}

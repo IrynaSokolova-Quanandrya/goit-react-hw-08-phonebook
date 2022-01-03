@@ -1,10 +1,9 @@
 .header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 5px 15px;
-  background-color: orange;
-  /* box-shadow: 0 11px 22px orange; */
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px 15px;
+	background-color: orange;
 }

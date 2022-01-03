@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { contactsSelectors, changeFilter } from "../../redux/contacts";
 import PropTypes from "prop-types";
-import s from "../../styles/input.module.css";
+import s from '../Filter/Filter.module.css';
 
 export default function Filter() {
   const value = useSelector(contactsSelectors.getFilter);
