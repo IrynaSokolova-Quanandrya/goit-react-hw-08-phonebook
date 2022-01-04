@@ -26,6 +26,6 @@ export default function ContactList() {
   );
 }
 ContactList.prototype = {
-  contacts: PropTypes.object.isRequired,
+  contactsList: PropTypes.object.isRequired,
   onDeleteContact: PropTypes.func.isRequired,
 };

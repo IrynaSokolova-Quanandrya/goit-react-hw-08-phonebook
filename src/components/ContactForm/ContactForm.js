@@ -36,6 +36,7 @@ export default function ContactForm() {
       return;
     }
     dispatch(contactsOperations.addContact({ name, number }));
+    navigate('/contacts');
     reset();
   };
   const reset = () => {
@@ -80,7 +81,7 @@ export default function ContactForm() {
           />
         </label>
         <Button variant="primary" type="submit" size="sm">
-          <Link to="/contacts" />
+          {/* <Link to="/contacts" /> */}
           Add contact
         </Button>
       </form>
